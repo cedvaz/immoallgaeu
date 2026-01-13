@@ -16,13 +16,13 @@ export default function CityGrid() {
               href={`/immobilien-${city.slug}`}
               className="bg-white rounded-lg shadow-md hover:shadow-xl transition p-6 group"
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition">
                 {city.name}
               </h3>
               <p className="text-gray-600 mb-4">
                 Ø {city.avgPrice} €/m²
               </p>
-              <span className="text-primary-600 font-semibold group-hover:underline">
+              <span className="text-blue-600 font-semibold group-hover:underline">
                 Mehr erfahren →
               </span>
             </Link>

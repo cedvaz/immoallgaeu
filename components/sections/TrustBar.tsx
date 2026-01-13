@@ -11,7 +11,7 @@ export default function TrustBar() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {stats.map((stat, index) => (
             <div key={index}>
-              <div className="text-4xl font-bold text-primary-600 mb-2">
+              <div className="text-4xl font-bold text-blue-600 mb-2">
                 {stat.value}
               </div>
               <div className="text-gray-600">{stat.label}</div>
