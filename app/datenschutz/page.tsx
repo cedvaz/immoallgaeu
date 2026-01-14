@@ -109,13 +109,12 @@ export default function DatenschutzPage() {
             Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
           </p>
           <p>
-            [Ihr Name / Firmenname]<br />
-            Musterstraße 123<br />
-            87435 Kempten (Allgäu)
+            Cedric Vazquez Boo<br />
+            Am Frickenland 4<br />
+            87437 Kempten
           </p>
           <p>
-            Telefon: +49 (0) 831 / 123 456-78<br />
-            E-Mail: info@immoallgaeu.com
+            E-Mail: hi@cedric-ki.de
           </p>
           <p>
             Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen

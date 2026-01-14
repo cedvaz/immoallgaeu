@@ -14,64 +14,40 @@ export default function ImpressumPage() {
         <div className="prose prose-lg max-w-none">
           <h2>Angaben gemäß § 5 TMG</h2>
           <p>
-            <strong>WEH Immobilien</strong><br />
-            [Ihr Name / Firmenname]<br />
-            Musterstraße 123<br />
-            87435 Kempten (Allgäu)
+            Cedric Vazquez Boo<br />
+            Marketing & Vertrieb mit KI (UG i.G.)<br />
+            Am Frickenland 4<br />
+            87437 Kempten
           </p>
 
           <h2>Kontakt</h2>
           <p>
-            Telefon: +49 (0) 831 / 123 456-78<br />
-            E-Mail: info@immoallgaeu.com
+            E-Mail: hi@cedric-ki.de
           </p>
 
           <h2>Vertreten durch</h2>
           <p>
-            [Ihr Name]<br />
-            [Geschäftsführer / Inhaber]
+            Cedric Vazquez Boo
           </p>
 
           <h2>Registereintrag</h2>
           <p>
-            Eintragung im Handelsregister<br />
-            Registergericht: [Amtsgericht]<br />
-            Registernummer: [HRB-Nummer]
+            Eintragung im Handelsregister (in Gründung)<br />
+            Registergericht: Amtsgericht Kempten<br />
+            Registernummer: [Eintrag erfolgt]
           </p>
 
           <h2>Umsatzsteuer-ID</h2>
           <p>
             Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br />
-            DE [Ihre USt-IdNr.]
-          </p>
-
-          <h2>Berufsbezeichnung und berufsrechtliche Regelungen</h2>
-          <p>
-            Berufsbezeichnung: Immobilienmakler<br />
-            Zuständige Kammer: [IHK für München und Oberbayern]<br />
-            Verliehen in: Deutschland
-          </p>
-
-          <h2>Aufsichtsbehörde</h2>
-          <p>
-            [Zuständige Behörde]<br />
-            [Adresse der Behörde]
-          </p>
-
-          <h2>Angaben zur Berufs­haftpflicht­versicherung</h2>
-          <p>
-            Name und Sitz des Versicherers:<br />
-            [Name der Versicherung]<br />
-            [Adresse]
-          </p>
-          <p>
-            Geltungsraum der Versicherung: Deutschland
+            [Eintrag erfolgt]
           </p>
 
           <h2>Redaktionell verantwortlich</h2>
           <p>
-            [Ihr Name]<br />
-            [Adresse]
+            Cedric Vazquez Boo<br />
+            Am Frickenland 4<br />
+            87437 Kempten
           </p>
 
           <h2>EU-Streitschlichtung</h2>
