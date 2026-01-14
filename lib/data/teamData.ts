@@ -4,6 +4,7 @@ export interface TeamMember {
   id: string;
   name: string;
   role: string;
+  image: string;
   icon: string;
   gradientFrom: string;
   gradientTo: string;
@@ -16,6 +17,7 @@ export const teamMembers: TeamMember[] = [
     id: "ada",
     name: "Ada",
     role: "Data Analyst",
+    image: "/images/team/ada.webp",
     icon: "chart",
     gradientFrom: "primary-100",
     gradientTo: "primary-200",
@@ -36,6 +38,7 @@ export const teamMembers: TeamMember[] = [
     id: "quinn",
     name: "Quinn",
     role: "Quality Analyst",
+    image: "/images/team/quinn.webp",
     icon: "shield",
     gradientFrom: "secondary-100",
     gradientTo: "secondary-200",
@@ -56,6 +59,7 @@ export const teamMembers: TeamMember[] = [
     id: "robin",
     name: "Robin",
     role: "Report Writer",
+    image: "/images/team/robin.webp",
     icon: "document",
     gradientFrom: "accent-100",
     gradientTo: "accent-200",
@@ -76,6 +80,7 @@ export const teamMembers: TeamMember[] = [
     id: "mia",
     name: "Mia",
     role: "Marketing Agent",
+    image: "/images/team/mia.webp",
     icon: "megaphone",
     gradientFrom: "primary-100",
     gradientTo: "secondary-100",
@@ -96,6 +101,7 @@ export const teamMembers: TeamMember[] = [
     id: "sam",
     name: "Sam",
     role: "Sales Agent",
+    image: "/images/team/sam.webp",
     icon: "chat",
     gradientFrom: "secondary-100",
     gradientTo: "accent-100",
@@ -116,6 +122,7 @@ export const teamMembers: TeamMember[] = [
     id: "theo",
     name: "Theo",
     role: "Tech Ops Engineer",
+    image: "/images/team/theo.webp",
     icon: "wrench",
     gradientFrom: "accent-100",
     gradientTo: "primary-100",
@@ -136,6 +143,7 @@ export const teamMembers: TeamMember[] = [
     id: "ria",
     name: "Ria",
     role: "Research Agent",
+    image: "/images/team/ria.webp",
     icon: "book",
     gradientFrom: "secondary-100",
     gradientTo: "secondary-200",

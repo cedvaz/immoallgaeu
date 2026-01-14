@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { teamMembers, getIconPath } from "@/lib/data/teamData";
 
 export default function TeamPage() {
@@ -72,23 +73,37 @@ export default function TeamPage() {
                 key={member.id}
                 className="card p-8 hover:shadow-hard hover:-translate-y-1 transition-all duration-300"
               >
-                {/* Avatar - Large gradient icon */}
-                <div
-                  className={`w-24 h-24 bg-gradient-to-br from-${member.gradientFrom} to-${member.gradientTo} rounded-2xl flex items-center justify-center mx-auto mb-6`}
-                >
-                  <svg
-                    className={`w-12 h-12 text-${member.gradientFrom.replace("-100", "-600").replace("-200", "-600")}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d={getIconPath(member.icon)}
-                    />
-                  </svg>
+                {/* Avatar - Image or Gradient Fallback */}
+                <div className="relative w-32 h-32 mx-auto mb-6 group">
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br from-${member.gradientFrom} to-${member.gradientTo} rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity`}
+                  ></div>
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-white shadow-soft">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <svg
+                          className={`w-12 h-12 text-${member.gradientFrom.replace("-100", "-600").replace("-200", "-600")}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d={getIconPath(member.icon)}
+                          />
+                        </svg>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 {/* Badge */}
