@@ -74,7 +74,7 @@ export default function TeamPage() {
                 className="card p-8 hover:shadow-hard hover:-translate-y-1 transition-all duration-300"
               >
                 {/* Avatar - Image or Gradient Fallback */}
-                <div className="relative w-32 h-32 mx-auto mb-6 group">
+                <div className="relative w-64 h-64 mx-auto mb-6 group">
                   <div
                     className={`absolute inset-0 bg-gradient-to-br from-${member.gradientFrom} to-${member.gradientTo} rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity`}
                   ></div>
