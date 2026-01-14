@@ -25,6 +25,12 @@ export default function Header() {
               Preise
             </Link>
             <Link
+              href="/methodik"
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+            >
+              Methodik
+            </Link>
+            <Link
               href="/ratgeber"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
             >

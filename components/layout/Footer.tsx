@@ -34,6 +34,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/immobilienbewertung" className="text-gray-400 hover:text-white">Bewertung</Link></li>
               <li><Link href="/immobilienpreise" className="text-gray-400 hover:text-white">Preise</Link></li>
+              <li><Link href="/methodik" className="text-gray-400 hover:text-white">Methodik</Link></li>
               <li><Link href="/ratgeber" className="text-gray-400 hover:text-white">Ratgeber</Link></li>
             </ul>
           </div>

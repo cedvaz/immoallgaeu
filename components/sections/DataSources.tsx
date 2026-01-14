@@ -168,21 +168,37 @@ export default function DataSources() {
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="text-center">
-          <p className="text-gray-600 mb-6">
-            Möchten Sie mehr über unsere Methodik erfahren?
-          </p>
-          <Link
-            href="#"
-            className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-bold text-lg transition-colors group"
-          >
-            <span>Detaillierte Methodik ansehen</span>
-            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-          <p className="text-sm text-gray-500 mt-2">(Demnächst verfügbar)</p>
+        {/* CTA - Make more prominent */}
+        <div className="card p-8 bg-gradient-to-br from-primary-50 to-secondary-50 border-2 border-primary-200">
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 rounded-full text-primary-700 text-sm font-semibold mb-4">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+              </svg>
+              <span>Volle Transparenz</span>
+            </div>
+
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              Wie funktioniert unsere Bewertung?
+            </h3>
+
+            <p className="text-gray-600 mb-6">
+              Verstehen Sie genau, wie wir Ihre Immobilie bewerten. Wir legen unsere Methodik, Datenquellen und Algorithmen vollständig offen.
+            </p>
+
+            <Link
+              href="/methodik"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl font-bold text-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 shadow-medium hover:shadow-hard hover:-translate-y-0.5"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+              </svg>
+              <span>Detaillierte Methodik ansehen</span>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
