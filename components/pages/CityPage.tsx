@@ -62,7 +62,7 @@ export default function CityPage({ citySlug }: { citySlug: CitySlug }) {
             Was ist Ihre Immobilie in {city.name} wert?
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Erhalten Sie eine kostenlose und unverbindliche Bewertung von unserem Experten-Team.
+            Erhalten Sie eine kostenlose algorithmusbasierte Bewertung auf Basis aktueller Marktdaten und öffentlicher Bodenrichtwerte.
           </p>
           <Link href="/immobilienbewertung" className="btn-primary">
             Jetzt kostenlos bewerten
@@ -176,7 +176,7 @@ export default function CityPage({ citySlug }: { citySlug: CitySlug }) {
             Sie möchten in {city.name} verkaufen?
           </h2>
           <p className="text-xl mb-10 text-white/90">
-            Profitieren Sie von unserer regionalen Expertise und persönlichen Beratung vor Ort.
+            Profitieren Sie von unserer datengetriebenen Analyse mit regionalem Allgäu-Fokus und transparenter Methodik.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

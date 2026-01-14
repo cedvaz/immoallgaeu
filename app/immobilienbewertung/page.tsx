@@ -36,7 +36,7 @@ export default function BewertungPage() {
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span>Von Experten geprüft</span>
+              <span>Algorithmusbasierte Analyse</span>
             </div>
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -92,12 +92,12 @@ export default function BewertungPage() {
             <div className="card p-8 text-center hover:shadow-medium hover:-translate-y-2 transition-all duration-300">
               <div className="w-20 h-20 bg-gradient-to-br from-accent-100 to-accent-200 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <svg className="w-10 h-10 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Expertise</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Datenbasiert</h3>
               <p className="text-gray-600 leading-relaxed">
-                Über 15 Jahre Erfahrung am Allgäuer Immobilienmarkt.
+                Analyse von 10.000+ Datenpunkten aus 6 Allgäu-Städten. Öffentliche Bodenrichtwerte (BORIS-D) + aktuelle Marktdaten.
               </p>
             </div>
           </div>
@@ -139,10 +139,10 @@ export default function BewertungPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    Wie genau ist die Online-Bewertung?
+                    Wie genau ist die algorithmische Bewertung?
                   </h3>
                   <p className="text-gray-700 leading-relaxed">
-                    Unsere Online-Bewertung basiert auf aktuellen Marktdaten und gibt Ihnen eine realistische Preisspanne. Für eine exakte Bewertung empfehlen wir eine persönliche Besichtigung vor Ort.
+                    Unsere Bewertung analysiert öffentliche Bodenrichtwerte (BORIS-D) und über 10.000 historische Datenpunkte aus dem Allgäu. Der Algorithmus nutzt das Vergleichswertverfahren und berücksichtigt Lage, Größe, Zustand und Markttrends. Typische Abweichung: ±15-20%. Dies ist eine erste Einschätzung - für offizielle Zwecke (Finanzierung, etc.) benötigen Sie ein zertifiziertes Gutachten nach §194 BauGB.
                   </p>
                 </div>
               </div>
