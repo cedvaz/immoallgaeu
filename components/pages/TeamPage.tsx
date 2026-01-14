@@ -71,92 +71,94 @@ export default function TeamPage() {
             {teamMembers.map((member) => (
               <div
                 key={member.id}
-                className="card p-8 hover:shadow-hard hover:-translate-y-1 transition-all duration-300"
+                className="card overflow-hidden hover:shadow-hard hover:-translate-y-1 transition-all duration-300"
               >
-                {/* Avatar - Image or Gradient Fallback */}
-                <div className="relative w-64 h-64 mx-auto mb-6 group">
+                {/* Avatar - Large Full Width Portrait */}
+                <div className="relative w-full aspect-[4/5] group">
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br from-${member.gradientFrom} to-${member.gradientTo} rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity`}
+                    className={`absolute inset-0 bg-gradient-to-br from-${member.gradientFrom} to-${member.gradientTo} opacity-30`}
                   ></div>
-                  <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-white shadow-soft">
-                    {member.image ? (
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <svg
-                          className={`w-12 h-12 text-${member.gradientFrom.replace("-100", "-600").replace("-200", "-600")}`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          strokeWidth={2}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d={getIconPath(member.icon)}
-                          />
-                        </svg>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Badge */}
-                <div className="flex justify-center mb-4">
-                  <div className={`inline-flex items-center gap-2 px-3 py-1 bg-${member.gradientFrom} text-${member.gradientFrom.replace("-100", "-700")} rounded-full text-xs font-semibold`}>
-                    <span className={`w-2 h-2 bg-${member.gradientFrom.replace("-100", "-600")} rounded-full animate-pulse`}></span>
-                    <span>99.9% Uptime</span>
-                  </div>
-                </div>
-
-                {/* Name + Role */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-1 text-center">
-                  {member.name}
-                </h3>
-                <p className="text-gray-600 mb-6 text-center">{member.role}</p>
-
-                {/* Specialties */}
-                <div className="mb-6">
-                  <h4 className="font-semibold text-gray-900 text-sm mb-3">
-                    Spezialgebiete:
-                  </h4>
-                  <ul className="space-y-2">
-                    {member.specialties.map((specialty, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start gap-2 text-sm text-gray-700"
+                  {member.image ? (
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      priority={member.id === "ada" || member.id === "quinn"}
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <svg
+                        className={`w-16 h-16 text-${member.gradientFrom.replace("-100", "-600").replace("-200", "-600")}`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
                       >
-                        <svg
-                          className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <span>{specialty}</span>
-                      </li>
-                    ))}
-                  </ul>
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d={getIconPath(member.icon)}
+                        />
+                      </svg>
+                    </div>
+                  )}
+                  {/* Status Overlay */}
+                  <div className="absolute top-4 left-4">
+                    <div className={`inline-flex items-center gap-2 px-3 py-1 bg-white/90 backdrop-blur-sm text-${member.gradientFrom.replace("-100", "-700")} rounded-full text-xs font-semibold shadow-sm`}>
+                      <span className={`w-2 h-2 bg-${member.gradientFrom.replace("-100", "-600")} rounded-full animate-pulse`}></span>
+                      <span>Online</span>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Fun Facts */}
-                <div className="pt-6 border-t border-gray-200">
-                  <h4 className="font-semibold text-gray-900 text-sm mb-3">
-                    Fun Facts:
-                  </h4>
-                  <div className="space-y-2 text-xs text-gray-600">
-                    {member.funFacts.map((fact, idx) => (
-                      <p key={idx}>{fact}</p>
-                    ))}
+                <div className="p-8">
+                  {/* Name + Role */}
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="text-primary-600 font-medium">{member.role}</p>
+                  </div>
+                  {/* Specialties */}
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-gray-900 text-sm mb-3">
+                      Spezialgebiete:
+                    </h4>
+                    <ul className="space-y-2">
+                      {member.specialties.map((specialty, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-start gap-2 text-sm text-gray-700"
+                        >
+                          <svg
+                            className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          <span>{specialty}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+
+                  {/* Fun Facts */}
+                  <div className="pt-6 border-t border-gray-200">
+                    <h4 className="font-semibold text-gray-900 text-sm mb-3">
+                      Fun Facts:
+                    </h4>
+                    <div className="space-y-2 text-xs text-gray-600">
+                      {member.funFacts.map((fact, idx) => (
+                        <p key={idx}>{fact}</p>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -279,10 +281,10 @@ export default function TeamPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Human Note */}
-      <section className="py-12 bg-gray-50">
+      < section className="py-12 bg-gray-50" >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="card p-8 bg-gradient-to-br from-primary-50 to-white border-2 border-primary-200">
             <div className="flex items-start gap-4">
@@ -313,7 +315,7 @@ export default function TeamPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-primary-600 via-primary-500 to-secondary-600 text-white">
