@@ -190,7 +190,7 @@ export default function ImmobilieBewerten() {
               </div>
 
               <div className="bg-primary-50 rounded-lg p-6 mb-6">
-                <h4 className="font-semibold mb-3">📊 Wie funktioniert's?</h4>
+                <h4 className="font-semibold mb-3">📊 Wie funktioniert&apos;s?</h4>
                 <p className="text-sm text-gray-700 mb-3">
                   Der Wert wird durch <strong>Vergleich mit ähnlichen Immobilien</strong> ermittelt, 
                   die kürzlich in der Region verkauft wurden.
@@ -241,7 +241,7 @@ export default function ImmobilieBewerten() {
               </div>
 
               <div className="bg-secondary-50 rounded-lg p-6 mb-6">
-                <h4 className="font-semibold mb-3">📊 Wie funktioniert's?</h4>
+                <h4 className="font-semibold mb-3">📊 Wie funktioniert&apos;s?</h4>
                 <p className="text-sm text-gray-700 mb-3">
                   Der Wert basiert auf den <strong>erzielbaren Mieteinnahmen</strong> und dem 
                   <strong> Bodenwert</strong>.
@@ -293,7 +293,7 @@ export default function ImmobilieBewerten() {
               </div>
 
               <div className="bg-accent-50 rounded-lg p-6 mb-6">
-                <h4 className="font-semibold mb-3">📊 Wie funktioniert's?</h4>
+                <h4 className="font-semibold mb-3">📊 Wie funktioniert&apos;s?</h4>
                 <p className="text-sm text-gray-700 mb-3">
                   Der Wert ergibt sich aus <strong>Bodenwert + Gebäudesachwert</strong> 
                   (Herstellungskosten minus Alterswertminderung).
@@ -728,8 +728,8 @@ export default function ImmobilieBewerten() {
                   <h3 className="font-bold text-lg">Emotionale Überbewertung</h3>
                 </div>
                 <p className="text-sm text-gray-700">
-                  <strong>Fehler:</strong> "Ich habe 50.000 € investiert, also ist meine Immobilie 
-                  jetzt 50.000 € mehr wert."<br/><br/>
+                  <strong>Fehler:</strong> &quot;Ich habe 50.000 € investiert, also ist meine Immobilie 
+                  jetzt 50.000 € mehr wert.&quot;<br/><br/>
                   <strong>Realität:</strong> Der Markt entscheidet, nicht Ihre Investitionen. 
                   Individuelle Umbauten steigern oft nicht den Wert.
                 </p>
@@ -741,8 +741,8 @@ export default function ImmobilieBewerten() {
                   <h3 className="font-bold text-lg">Falsche Vergleichsobjekte</h3>
                 </div>
                 <p className="text-sm text-gray-700">
-                  <strong>Fehler:</strong> "Die Wohnung in München kostet 8.000 €/m², also ist 
-                  meine auch so viel wert."<br/><br/>
+                  <strong>Fehler:</strong> &quot;Die Wohnung in München kostet 8.000 €/m², also ist 
+                  meine auch so viel wert.&quot;<br/><br/>
                   <strong>Realität:</strong> Nur Objekte in <strong>derselben Region & Lage</strong> 
                   sind vergleichbar. Allgäu ≠ München.
                 </p>
@@ -790,7 +790,7 @@ export default function ImmobilieBewerten() {
                   <h3 className="font-bold text-lg">Lage unterschätzen</h3>
                 </div>
                 <p className="text-sm text-gray-700">
-                  <strong>Fehler:</strong> "Die Immobilie ist schön, die Lage spielt keine Rolle."<br/><br/>
+                  <strong>Fehler:</strong> &quot;Die Immobilie ist schön, die Lage spielt keine Rolle.&quot;<br/><br/>
                   <strong>Realität:</strong> Die Lage macht oft <strong>50% des Wertes</strong> aus. 
                   Selbst eine perfekte Immobilie verliert in schlechter Lage an Wert.
                 </p>
