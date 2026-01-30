@@ -358,7 +358,7 @@ export default function ImmobilieBewerten() {
                   <li>• <strong>Makrolage:</strong> Stadt vs. Land (Kempten vs. Dorf)</li>
                   <li>• <strong>Mikrolage:</strong> Straße, Nachbarschaft, Lärmbelastung</li>
                   <li>• <strong>Infrastruktur:</strong> Schulen, Ärzte, Einkaufen, ÖPNV</li>
-                  <li>• <strong>Tourismus:</strong> Oberstdorf > Kaufbeuren (Nachfrage!)</li>
+                  <li>• <strong>Tourismus:</strong> Oberstdorf &gt; Kaufbeuren (Nachfrage!)</li>
                 </ul>
               </div>
 
