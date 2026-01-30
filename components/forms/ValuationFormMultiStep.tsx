@@ -6,6 +6,8 @@ import { cityDetails } from "@/lib/data/cityData";
 
 type PropertyType = "wohnung" | "haus" | "grundstueck" | "gewerbe" | "";
 type Condition = "neuwertig" | "gepflegt" | "renovierungsbeduerftig" | "sanierungsbeduerftig" | "";
+type LandUse = "bauland" | "ackerland" | "wiese" | "wald" | "gewerbegebiet" | "";
+type BusinessType = "buero" | "einzelhandel" | "gastgewerbe" | "produktion" | "lager" | "andere" | "";
 
 export default function ValuationFormMultiStep() {
   const [step, setStep] = useState(1);
@@ -19,6 +21,13 @@ export default function ValuationFormMultiStep() {
     buildYear: "",
     rooms: "",
     condition: "" as Condition,
+    // Additional fields for land
+    landUse: "" as LandUse,
+    developmentStatus: "",
+    // Additional fields for commercial
+    businessType: "" as BusinessType,
+    annualRent: "",
+    commercialSpace: "",
     email: "",
     name: "",
     phone: "",
@@ -43,8 +52,8 @@ export default function ValuationFormMultiStep() {
       cityData = cityDetails[cityKey as keyof typeof cityDetails];
     }
 
-    // Base price per square meter based on property type and city
-    let basePricePerSqm = 0;
+    // Base price calculation based on property type and city
+    let basePrice = 0;
 
     if (data.propertyType === "wohnung") {
       const livingSpace = parseFloat(data.livingSpace) || 0;
@@ -53,41 +62,99 @@ export default function ValuationFormMultiStep() {
         const priceRange = cityData.propertyTypes.find(pt => pt.type.includes("30-50m²"));
         if (priceRange) {
           const prices = priceRange.price.split(" - ").map(p => parseFloat(p.replace(".", "").replace(",", ".")));
-          basePricePerSqm = (prices[0] + prices[1]) / 2;
+          basePrice = ((prices[0] + prices[1]) / 2) * livingSpace;
         } else {
-          basePricePerSqm = parseFloat(cityData.avgPrice.replace(".", "").replace(",", "."));
+          basePrice = parseFloat(cityData.avgPrice.replace(".", "").replace(",", ".")) * livingSpace;
         }
       } else if (livingSpace <= 80) {
         // Medium apartment
         const priceRange = cityData.propertyTypes.find(pt => pt.type.includes("50-80m²"));
         if (priceRange) {
           const prices = priceRange.price.split(" - ").map(p => parseFloat(p.replace(".", "").replace(",", ".")));
-          basePricePerSqm = (prices[0] + prices[1]) / 2;
+          basePrice = ((prices[0] + prices[1]) / 2) * livingSpace;
         } else {
-          basePricePerSqm = parseFloat(cityData.avgPrice.replace(".", "").replace(",", ".")) + 200;
+          basePrice = (parseFloat(cityData.avgPrice.replace(".", "").replace(",", ".")) + 200) * livingSpace;
         }
       } else {
         // Large apartment
         const priceRange = cityData.propertyTypes.find(pt => pt.type.includes("80-120m²"));
         if (priceRange) {
           const prices = priceRange.price.split(" - ").map(p => parseFloat(p.replace(".", "").replace(",", ".")));
-          basePricePerSqm = (prices[0] + prices[1]) / 2;
+          basePrice = ((prices[0] + prices[1]) / 2) * livingSpace;
         } else {
-          basePricePerSqm = parseFloat(cityData.avgPrice.replace(".", "").replace(",", ".")) + 400;
+          basePrice = (parseFloat(cityData.avgPrice.replace(".", "").replace(",", ".")) + 400) * livingSpace;
         }
       }
     } else if (data.propertyType === "haus") {
+      const livingSpace = parseFloat(data.livingSpace) || 0;
       const houseType = cityData.propertyTypes.find(pt => pt.type.includes("Einfamilienhaus"));
       if (houseType) {
         const prices = houseType.price.split(" - ").map(p => parseFloat(p.replace(".", "").replace(",", ".")));
-        basePricePerSqm = (prices[0] + prices[1]) / 2;
+        basePrice = ((prices[0] + prices[1]) / 2) * livingSpace;
       } else {
-        basePricePerSqm = parseFloat(cityData.avgPrice.replace(".", "").replace(",", ".")) + 500;
+        basePrice = (parseFloat(cityData.avgPrice.replace(".", "").replace(",", ".")) + 500) * livingSpace;
       }
     } else if (data.propertyType === "grundstueck") {
-      basePricePerSqm = 200; // € per square meter for land
-    } else {
-      basePricePerSqm = 150; // Commercial default
+      const landArea = parseFloat(data.landArea) || 0;
+      let pricePerSqm = 200; // Default for land
+
+      // Adjust based on land use
+      switch (data.landUse) {
+        case "bauland":
+          pricePerSqm = 300;
+          break;
+        case "gewerbegebiet":
+          pricePerSqm = 250;
+          break;
+        case "wiese":
+        case "ackerland":
+          pricePerSqm = 50;
+          break;
+        case "wald":
+          pricePerSqm = 30;
+          break;
+      }
+
+      // Adjust based on development status
+      if (data.developmentStatus === "bebaut") {
+        pricePerSqm *= 1.5;
+      } else if (data.developmentStatus === "erschlossen") {
+        pricePerSqm *= 1.2;
+      }
+
+      basePrice = pricePerSqm * landArea;
+    } else if (data.propertyType === "gewerbe") {
+      const commercialSpace = parseFloat(data.commercialSpace) || 0;
+      const annualRent = parseFloat(data.annualRent) || 0;
+
+      let pricePerSqm = 2000; // Default commercial price
+
+      // Adjust based on business type
+      switch (data.businessType) {
+        case "buero":
+          pricePerSqm = 2500;
+          break;
+        case "einzelhandel":
+          pricePerSqm = 3500;
+          break;
+        case "gastgewerbe":
+          pricePerSqm = 3000;
+          break;
+        case "produktion":
+          pricePerSqm = 1500;
+          break;
+        case "lager":
+          pricePerSqm = 1200;
+          break;
+      }
+
+      // If rent information is provided, use yield-based valuation
+      if (annualRent > 0) {
+        const yieldRate = 0.05; // 5% yield for commercial properties
+        basePrice = annualRent / yieldRate;
+      } else {
+        basePrice = pricePerSqm * commercialSpace;
+      }
     }
 
     // Calculate base price
@@ -146,7 +213,7 @@ export default function ValuationFormMultiStep() {
       const newValue = calculateEstimatedValue();
       setEstimatedValue(newValue);
     }
-  }, [step, isCalculating, data.city, data.propertyType, data.livingSpace, data.landArea, data.buildYear, data.condition, data.rooms]);
+  }, [step, isCalculating, data]);
 
   const handleNext = () => {
     if (step === 3) {
@@ -318,80 +385,270 @@ export default function ValuationFormMultiStep() {
       {/* Step 3: Details */}
       {step === 3 && (
         <div>
-          <h2 className="text-3xl font-bold mb-6">Details zu Ihrer Immobilie</h2>
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Wohnfläche (m²) *
-                </label>
-                <input
-                  type="number"
-                  value={data.livingSpace}
-                  onChange={(e) => setData({ ...data, livingSpace: e.target.value })}
-                  placeholder="z.B. 85"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              {data.propertyType !== "wohnung" && (
+          <h2 className="text-3xl font-bold mb-6">
+            {data.propertyType === "wohnung" && "Details zu Ihrer Wohnung"}
+            {data.propertyType === "haus" && "Details zu Ihrem Haus"}
+            {data.propertyType === "grundstueck" && "Details zu Ihrem Grundstück"}
+            {data.propertyType === "gewerbe" && "Details zu Ihrer Gewerbeimmobilie"}
+          </h2>
+          <div className="space-y-6">
+
+            {/* Wohnung */}
+            {data.propertyType === "wohnung" && (
+              <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Grundstücksfläche (m²)
+                    Wohnfläche (m²) *
+                  </label>
+                  <input
+                    type="number"
+                    value={data.livingSpace}
+                    onChange={(e) => setData({ ...data, livingSpace: e.target.value })}
+                    placeholder="z.B. 85"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Baujahr *
+                    </label>
+                    <input
+                      type="number"
+                      value={data.buildYear}
+                      onChange={(e) => setData({ ...data, buildYear: e.target.value })}
+                      placeholder="z.B. 1995"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Anzahl Zimmer *
+                    </label>
+                    <input
+                      type="number"
+                      value={data.rooms}
+                      onChange={(e) => setData({ ...data, rooms: e.target.value })}
+                      placeholder="z.B. 3"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Zustand *
+                  </label>
+                  <select
+                    value={data.condition}
+                    onChange={(e) => setData({ ...data, condition: e.target.value as Condition })}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Bitte wählen</option>
+                    <option value="neuwertig">Neuwertig</option>
+                    <option value="gepflegt">Gepflegt</option>
+                    <option value="renovierungsbeduerftig">Renovierungsbedürftig</option>
+                    <option value="sanierungsbeduerftig">Sanierungsbedürftig</option>
+                  </select>
+                </div>
+              </div>
+            )}
+
+            {/* Haus */}
+            {data.propertyType === "haus" && (
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Wohnfläche (m²) *
+                    </label>
+                    <input
+                      type="number"
+                      value={data.livingSpace}
+                      onChange={(e) => setData({ ...data, livingSpace: e.target.value })}
+                      placeholder="z.B. 150"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Grundstücksfläche (m²) *
+                    </label>
+                    <input
+                      type="number"
+                      value={data.landArea}
+                      onChange={(e) => setData({ ...data, landArea: e.target.value })}
+                      placeholder="z.B. 600"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Baujahr *
+                    </label>
+                    <input
+                      type="number"
+                      value={data.buildYear}
+                      onChange={(e) => setData({ ...data, buildYear: e.target.value })}
+                      placeholder="z.B. 1985"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Anzahl Zimmer *
+                    </label>
+                    <input
+                      type="number"
+                      value={data.rooms}
+                      onChange={(e) => setData({ ...data, rooms: e.target.value })}
+                      placeholder="z.B. 5"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Zustand *
+                  </label>
+                  <select
+                    value={data.condition}
+                    onChange={(e) => setData({ ...data, condition: e.target.value as Condition })}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Bitte wählen</option>
+                    <option value="neuwertig">Neuwertig</option>
+                    <option value="gepflegt">Gepflegt</option>
+                    <option value="renovierungsbeduerftig">Renovierungsbedürftig</option>
+                    <option value="sanierungsbeduerftig">Sanierungsbedürftig</option>
+                  </select>
+                </div>
+              </div>
+            )}
+
+            {/* Grundstück */}
+            {data.propertyType === "grundstueck" && (
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Grundstücksfläche (m²) *
                   </label>
                   <input
                     type="number"
                     value={data.landArea}
                     onChange={(e) => setData({ ...data, landArea: e.target.value })}
-                    placeholder="z.B. 400"
+                    placeholder="z.B. 1000"
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
-              )}
-            </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Baujahr *
-                </label>
-                <input
-                  type="number"
-                  value={data.buildYear}
-                  onChange={(e) => setData({ ...data, buildYear: e.target.value })}
-                  placeholder="z.B. 1995"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Anzahl Zimmer *
-                </label>
-                <input
-                  type="number"
-                  value={data.rooms}
-                  onChange={(e) => setData({ ...data, rooms: e.target.value })}
-                  placeholder="z.B. 3"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-            </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Nutzungsart *
+                  </label>
+                  <select
+                    value={data.landUse}
+                    onChange={(e) => setData({ ...data, landUse: e.target.value as LandUse })}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Bitte wählen</option>
+                    <option value="bauland">Bauland</option>
+                    <option value="gewerbegebiet">Gewerbegebiet</option>
+                    <option value="wiese">Wiese/Weide</option>
+                    <option value="ackerland">Ackerland</option>
+                    <option value="wald">Wald</option>
+                  </select>
+                </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Zustand *
-              </label>
-              <select
-                value={data.condition}
-                onChange={(e) => setData({ ...data, condition: e.target.value as Condition })}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="">Bitte wählen</option>
-                <option value="neuwertig">Neuwertig</option>
-                <option value="gepflegt">Gepflegt</option>
-                <option value="renovierungsbeduerftig">Renovierungsbedürftig</option>
-                <option value="sanierungsbeduerftig">Sanierungsbedürftig</option>
-              </select>
-            </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Erschließungsstatus
+                  </label>
+                  <select
+                    value={data.developmentStatus}
+                    onChange={(e) => setData({ ...data, developmentStatus: e.target.value })}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Bitte wählen</option>
+                    <option value="vollerschlossen">Voll erschlossen (Wasser, Strom, Straße)</option>
+                    <option value="teilerschlossen">Teilweise erschlossen</option>
+                    <option value="unerschlossen">Nicht erschlossen</option>
+                    <option value="bebaut">Bereits bebaut</option>
+                  </select>
+                </div>
+              </div>
+            )}
+
+            {/* Gewerbe */}
+            {data.propertyType === "gewerbe" && (
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Nutzfläche (m²) *
+                    </label>
+                    <input
+                      type="number"
+                      value={data.commercialSpace}
+                      onChange={(e) => setData({ ...data, commercialSpace: e.target.value })}
+                      placeholder="z.B. 200"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Jahresmieteinnahmen (€)
+                    </label>
+                    <input
+                      type="number"
+                      value={data.annualRent}
+                      onChange={(e) => setData({ ...data, annualRent: e.target.value })}
+                      placeholder="z.B. 24000"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                    />
+                    <p className="text-xs text-gray-500 mt-1">Optional - für genauere Bewertung</p>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Gewerbeart *
+                  </label>
+                  <select
+                    value={data.businessType}
+                    onChange={(e) => setData({ ...data, businessType: e.target.value as BusinessType })}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Bitte wählen</option>
+                    <option value="buero">Büro</option>
+                    <option value="einzelhandel">Einzelhandel</option>
+                    <option value="gastgewerbe">Gastgewerbe</option>
+                    <option value="produktion">Produktion</option>
+                    <option value="lager">Lager</option>
+                    <option value="andere">Andere</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Baujahr
+                  </label>
+                  <input
+                    type="number"
+                    value={data.buildYear}
+                    onChange={(e) => setData({ ...data, buildYear: e.target.value })}
+                    placeholder="z.B. 2005"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+            )}
+
           </div>
 
           <div className="flex gap-4 mt-8">
@@ -403,7 +660,12 @@ export default function ValuationFormMultiStep() {
             </button>
             <button
               onClick={handleNext}
-              disabled={!data.livingSpace || !data.buildYear || !data.rooms || !data.condition}
+              disabled={
+                (data.propertyType === "wohnung" && (!data.livingSpace || !data.buildYear || !data.rooms || !data.condition)) ||
+                (data.propertyType === "haus" && (!data.livingSpace || !data.landArea || !data.buildYear || !data.rooms || !data.condition)) ||
+                (data.propertyType === "grundstueck" && (!data.landArea || !data.landUse)) ||
+                (data.propertyType === "gewerbe" && (!data.commercialSpace || !data.businessType))
+              }
               className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
             >
               Weiter
