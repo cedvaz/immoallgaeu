@@ -145,7 +145,7 @@ export default function ValuationFormMultiStep() {
       const newValue = calculateEstimatedValue();
       setEstimatedValue(newValue);
     }
-  }, [step, data]);
+  }, [step, data.city, data.propertyType, data.livingSpace, data.landArea, data.buildYear, data.condition, data.rooms]);
 
   const handleNext = () => {
     setStep(step + 1);
