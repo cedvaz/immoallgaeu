@@ -8,6 +8,14 @@ export const metadata: Metadata = {
 
 const guides = [
   {
+    title: "Immobilienpreise Allgäu 2025",
+    slug: "immobilienpreise-allgaeu-2025",
+    description: "Aktuelle Immobilienpreise & Quadratmeterpreise für alle Allgäuer Städte: Kempten, Oberstdorf, Sonthofen & mehr. Mit Prognose & Trends.",
+    icon: "📊",
+    category: "Marktanalyse",
+    readTime: "10 Min.",
+  },
+  {
     title: "Haus kaufen im Allgäu",
     slug: "haus-kaufen-allgaeu",
     description: "Der komplette Guide zum Hauskauf im Allgäu: Preise, Standorte, Finanzierung und worauf Sie achten sollten.",
