@@ -157,13 +157,6 @@ export default function ValuationFormMultiStep() {
       }
     }
 
-    // Calculate base price
-    const space = data.propertyType === "grundstueck"
-      ? parseFloat(data.landArea) || 0
-      : parseFloat(data.livingSpace) || 0;
-
-    let basePrice = basePricePerSqm * space;
-
     // Adjust for build year (newer is better)
     const currentYear = new Date().getFullYear();
     const buildYear = parseInt(data.buildYear) || currentYear;
