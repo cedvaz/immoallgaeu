@@ -31,7 +31,7 @@ export default function KontaktPage() {
 
               <div className="space-y-8">
                 <div className="bg-gray-50 rounded-lg p-6">
-                  <h3 className="font-semibold text-xl mb-4">WEH Immobilien</h3>
+                  <h3 className="font-semibold text-xl mb-4">Immo Allgäu</h3>
                   <div className="space-y-3 text-gray-700">
                     <div className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-blue-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -41,21 +41,9 @@ export default function KontaktPage() {
                       <div>
                         <div className="font-medium">Adresse</div>
                         <div className="text-sm">
-                          Musterstraße 123<br/>
-                          87435 Kempten (Allgäu)
+                          Am Frickenland 4<br />
+                          87437 Kempten
                         </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-blue-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      <div>
-                        <div className="font-medium">Telefon</div>
-                        <a href="tel:+498312345678" className="text-sm text-blue-600 hover:underline">
-                          +49 (0) 831 / 123 456-78
-                        </a>
                       </div>
                     </div>
 
@@ -78,8 +66,8 @@ export default function KontaktPage() {
                       <div>
                         <div className="font-medium">Öffnungszeiten</div>
                         <div className="text-sm">
-                          Mo-Fr: 9:00 - 18:00 Uhr<br/>
-                          Sa: Nach Vereinbarung
+                          Mo-Fr: 9:00 - 17:00 Uhr<br />
+                          Sa-So: Geschlossen
                         </div>
                       </div>
                     </div>

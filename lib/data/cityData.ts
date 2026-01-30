@@ -161,6 +161,33 @@ export const cityDetails = {
       { type: "Reihenhaus", price: "4.400 - 5.400" },
     ],
   },
+  immenstadt: {
+    name: "Immenstadt",
+    slug: "immenstadt",
+    avgPrice: "4.500",
+    avgRent: "12,50",
+    priceChange: "+4,2",
+    population: "14.500",
+    description: "Immenstadt im Allgäu, die 'Residenzstadt', überzeugt durch ihre direkte Lage am Großen Alpsee und den Mittagberg. Als historisches Zentrum und attraktiver Wohnort zwischen Kempten und Oberstdorf bietet Immenstadt hohe Lebensqualität und ein stabiles Wertsteigerungspotenzial für Immobilien.",
+    marketInsights: [
+      "Attraktive Seelage treibt Preise für Ferienimmobilien",
+      "Stabile Nachfrage in zentralen Wohnlagen",
+      "Gute Verkehrsanbindung an die B19",
+    ],
+    districts: [
+      { name: "Bühl am See", trend: "↑", avgPrice: "5.800" },
+      { name: "Stadtmitte", trend: "→", avgPrice: "4.200" },
+      { name: "Stein", trend: "↑", avgPrice: "4.400" },
+    ],
+    propertyTypes: [
+      { type: "Wohnung (30-50m²)", price: "3.900 - 4.800" },
+      { type: "Wohnung (50-80m²)", price: "4.200 - 5.100" },
+      { type: "Wohnung (80-120m²)", price: "4.500 - 5.500" },
+      { type: "Einfamilienhaus", price: "4.800 - 6.200" },
+      { type: "Doppelhaushälfte", price: "4.400 - 5.500" },
+      { type: "Reihenhaus", price: "4.000 - 4.900" },
+    ],
+  },
 };
 
 export type CitySlug = keyof typeof cityDetails;
