@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { cityDetails } from "@/lib/data/cityData";
 
 type PropertyType = "wohnung" | "haus" | "grundstueck" | "gewerbe" | "";
 type Condition = "neuwertig" | "gepflegt" | "renovierungsbeduerftig" | "sanierungsbeduerftig" | "";
@@ -25,15 +26,128 @@ export default function ValuationFormMultiStep() {
 
   const [estimatedValue, setEstimatedValue] = useState({ min: 0, max: 0 });
 
-  const handleNext = () => {
-    if (step === 4) {
-      // Calculate estimated value
-      const basePrice = data.propertyType === "wohnung" ? 4000 : data.propertyType === "haus" ? 5000 : 300;
-      const space = parseFloat(data.livingSpace) || parseFloat(data.landArea) || 100;
-      const min = Math.round(basePrice * space * 0.9);
-      const max = Math.round(basePrice * space * 1.1);
-      setEstimatedValue({ min, max });
+  // Function to calculate estimated value based on real market data
+  const calculateEstimatedValue = () => {
+    if (!data.city || !data.propertyType) {
+      return { min: 0, max: 0 };
     }
+
+    // Get city data
+    const cityKey = Object.keys(cityDetails).find(key =>
+      cityDetails[key as keyof typeof cityDetails].name.toLowerCase() === data.city.toLowerCase()
+    );
+
+    let cityData = cityDetails.kempten; // Default fallback
+    if (cityKey) {
+      cityData = cityDetails[cityKey as keyof typeof cityDetails];
+    }
+
+    // Base price per square meter based on property type and city
+    let basePricePerSqm = 0;
+
+    if (data.propertyType === "wohnung") {
+      const livingSpace = parseFloat(data.livingSpace) || 0;
+      if (livingSpace <= 50) {
+        // Small apartment
+        const priceRange = cityData.propertyTypes.find(pt => pt.type.includes("30-50m²"));
+        if (priceRange) {
+          const prices = priceRange.price.split(" - ").map(p => parseFloat(p.replace(".", "").replace(",", ".")));
+          basePricePerSqm = (prices[0] + prices[1]) / 2;
+        } else {
+          basePricePerSqm = parseFloat(cityData.avgPrice.replace(".", "").replace(",", "."));
+        }
+      } else if (livingSpace <= 80) {
+        // Medium apartment
+        const priceRange = cityData.propertyTypes.find(pt => pt.type.includes("50-80m²"));
+        if (priceRange) {
+          const prices = priceRange.price.split(" - ").map(p => parseFloat(p.replace(".", "").replace(",", ".")));
+          basePricePerSqm = (prices[0] + prices[1]) / 2;
+        } else {
+          basePricePerSqm = parseFloat(cityData.avgPrice.replace(".", "").replace(",", ".")) + 200;
+        }
+      } else {
+        // Large apartment
+        const priceRange = cityData.propertyTypes.find(pt => pt.type.includes("80-120m²"));
+        if (priceRange) {
+          const prices = priceRange.price.split(" - ").map(p => parseFloat(p.replace(".", "").replace(",", ".")));
+          basePricePerSqm = (prices[0] + prices[1]) / 2;
+        } else {
+          basePricePerSqm = parseFloat(cityData.avgPrice.replace(".", "").replace(",", ".")) + 400;
+        }
+      }
+    } else if (data.propertyType === "haus") {
+      const houseType = cityData.propertyTypes.find(pt => pt.type.includes("Einfamilienhaus"));
+      if (houseType) {
+        const prices = houseType.price.split(" - ").map(p => parseFloat(p.replace(".", "").replace(",", ".")));
+        basePricePerSqm = (prices[0] + prices[1]) / 2;
+      } else {
+        basePricePerSqm = parseFloat(cityData.avgPrice.replace(".", "").replace(",", ".")) + 500;
+      }
+    } else if (data.propertyType === "grundstueck") {
+      basePricePerSqm = 200; // € per square meter for land
+    } else {
+      basePricePerSqm = 150; // Commercial default
+    }
+
+    // Calculate base price
+    const space = data.propertyType === "grundstueck"
+      ? parseFloat(data.landArea) || 0
+      : parseFloat(data.livingSpace) || 0;
+
+    let basePrice = basePricePerSqm * space;
+
+    // Adjust for build year (newer is better)
+    const currentYear = new Date().getFullYear();
+    const buildYear = parseInt(data.buildYear) || currentYear;
+    const age = currentYear - buildYear;
+
+    if (age > 50) {
+      basePrice *= 0.7; // Very old buildings
+    } else if (age > 30) {
+      basePrice *= 0.8; // Old buildings
+    } else if (age > 15) {
+      basePrice *= 0.9; // Medium age
+    } else if (age < 5) {
+      basePrice *= 1.1; // New buildings
+    }
+
+    // Adjust for condition
+    switch (data.condition) {
+      case "neuwertig":
+        basePrice *= 1.1;
+        break;
+      case "gepflegt":
+        basePrice *= 1.0;
+        break;
+      case "renovierungsbeduerftig":
+        basePrice *= 0.8;
+        break;
+      case "sanierungsbeduerftig":
+        basePrice *= 0.6;
+        break;
+    }
+
+    // Adjust for number of rooms (more rooms = higher value, but diminishing returns)
+    const rooms = parseInt(data.rooms) || 1;
+    const roomFactor = 1 + (rooms - 1) * 0.1; // 10% per additional room
+    basePrice *= Math.min(roomFactor, 2.0); // Cap at 200%
+
+    // Add some realistic variance (±20%)
+    const min = Math.round(basePrice * 0.8);
+    const max = Math.round(basePrice * 1.2);
+
+    return { min, max };
+  };
+
+  // Recalculate value whenever step 4 is reached or data changes
+  useEffect(() => {
+    if (step === 4) {
+      const newValue = calculateEstimatedValue();
+      setEstimatedValue(newValue);
+    }
+  }, [step, data]);
+
+  const handleNext = () => {
     setStep(step + 1);
   };
 
