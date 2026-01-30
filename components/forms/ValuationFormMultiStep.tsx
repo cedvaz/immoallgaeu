@@ -9,6 +9,7 @@ type Condition = "neuwertig" | "gepflegt" | "renovierungsbeduerftig" | "sanierun
 
 export default function ValuationFormMultiStep() {
   const [step, setStep] = useState(1);
+  const [isCalculating, setIsCalculating] = useState(false);
   const [data, setData] = useState({
     propertyType: "" as PropertyType,
     plz: "",
@@ -139,19 +140,33 @@ export default function ValuationFormMultiStep() {
     return { min, max };
   };
 
-  // Recalculate value whenever step 4 is reached or data changes
+  // Recalculate value whenever step 4 is reached and calculation is complete
   useEffect(() => {
-    if (step === 4) {
+    if (step === 4 && !isCalculating) {
       const newValue = calculateEstimatedValue();
       setEstimatedValue(newValue);
     }
-  }, [step, data.city, data.propertyType, data.livingSpace, data.landArea, data.buildYear, data.condition, data.rooms]);
+  }, [step, isCalculating, data.city, data.propertyType, data.livingSpace, data.landArea, data.buildYear, data.condition, data.rooms]);
 
   const handleNext = () => {
-    setStep(step + 1);
+    if (step === 3) {
+      // Start calculation animation when moving to step 4
+      setIsCalculating(true);
+      setStep(step + 1);
+
+      // Complete calculation after 3 seconds
+      setTimeout(() => {
+        setIsCalculating(false);
+      }, 3000);
+    } else {
+      setStep(step + 1);
+    }
   };
 
-  const handleBack = () => setStep(step - 1);
+  const handleBack = () => {
+    setStep(step - 1);
+    setIsCalculating(false); // Reset calculation state when going back
+  };
 
   const progress = (step / 6) * 100;
 
@@ -193,6 +208,20 @@ export default function ValuationFormMultiStep() {
 
   return (
     <div className="max-w-2xl mx-auto">
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes progress {
+          0% { width: 0%; }
+          100% { width: 100%; }
+        }
+        @keyframes fade-in {
+          0% { opacity: 0; transform: translateY(10px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.5s ease-out;
+        }
+      `}</style>
       {/* Progress Bar */}
       <div className="mb-8">
         <div className="flex justify-between text-sm text-gray-600 mb-2">
@@ -386,16 +415,55 @@ export default function ValuationFormMultiStep() {
       {/* Step 4: Result Teaser */}
       {step === 4 && (
         <div className="text-center">
-          <h2 className="text-3xl font-bold mb-6">Ihre geschätzte Preisspanne</h2>
+          <h2 className="text-3xl font-bold mb-6">
+            {isCalculating ? "Berechne Ihre Preisspanne..." : "Ihre geschätzte Preisspanne"}
+          </h2>
 
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 mb-8">
-            <div className="text-5xl font-bold text-blue-600 mb-2">
-              {estimatedValue.min.toLocaleString('de-DE')} € - {estimatedValue.max.toLocaleString('de-DE')} €
+          {isCalculating ? (
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 mb-8">
+              <div className="flex flex-col items-center space-y-6">
+                {/* Animated Spinner */}
+                <div className="relative">
+                  <div className="w-16 h-16 border-4 border-blue-200 rounded-full animate-spin border-t-blue-600"></div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Animated Progress Bar */}
+                <div className="w-full max-w-xs">
+                  <div className="bg-blue-200 rounded-full h-2 overflow-hidden">
+                    <div className="bg-blue-600 h-full rounded-full animate-pulse" style={{
+                      animation: 'progress 3s ease-out forwards'
+                    }}></div>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-2">Analysiere Marktdaten...</p>
+                </div>
+
+                {/* Animated dots */}
+                <div className="flex space-x-1">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                  <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                  <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                </div>
+              </div>
+
+              <p className="text-gray-700 mt-6">
+                Wir analysieren aktuelle Marktdaten und vergleichen mit ähnlichen Immobilien in {data.city}
+              </p>
             </div>
-            <p className="text-gray-700">
-              Basierend auf aktuellen Marktdaten für {data.city}
-            </p>
-          </div>
+          ) : (
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 mb-8 animate-fade-in">
+              <div className="text-5xl font-bold text-blue-600 mb-2">
+                {estimatedValue.min.toLocaleString('de-DE')} € - {estimatedValue.max.toLocaleString('de-DE')} €
+              </div>
+              <p className="text-gray-700">
+                Basierend auf aktuellen Marktdaten für {data.city}
+              </p>
+            </div>
+          )}
 
           <p className="text-lg text-gray-700 mb-8">
             Für eine <strong>detaillierte und präzise Bewertung</strong> benötigen wir noch Ihre Kontaktdaten.
@@ -405,14 +473,16 @@ export default function ValuationFormMultiStep() {
             <button
               onClick={handleBack}
               className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50"
+              disabled={isCalculating}
             >
               Zurück
             </button>
             <button
               onClick={handleNext}
-              className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+              className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+              disabled={isCalculating}
             >
-              Detaillierte Bewertung erhalten
+              {isCalculating ? "Berechne..." : "Detaillierte Bewertung erhalten"}
             </button>
           </div>
         </div>
