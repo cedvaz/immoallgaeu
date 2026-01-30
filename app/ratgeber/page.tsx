@@ -8,6 +8,14 @@ export const metadata: Metadata = {
 
 const guides = [
   {
+    title: "Immobilie bewerten lassen",
+    slug: "immobilie-bewerten-lassen",
+    description: "Kostenlose Hausbewertung, Bewertungsverfahren & Faktoren. Was ist mein Haus wert? So ermitteln Sie den echten Marktwert!",
+    icon: "📊",
+    category: "Bewertung",
+    readTime: "11 Min.",
+  },
+  {
     title: "Immobilie erben – Was tun?",
     slug: "immobilie-erben",
     description: "Verkaufen, behalten oder vermieten? Alle Optionen, Steuern & Tipps für Erben. Was tun bei Erbengemeinschaft?",
@@ -19,7 +27,7 @@ const guides = [
     title: "Immobilienpreise Allgäu 2025",
     slug: "immobilienpreise-allgaeu-2025",
     description: "Aktuelle Immobilienpreise & Quadratmeterpreise für alle Allgäuer Städte: Kempten, Oberstdorf, Sonthofen & mehr. Mit Prognose & Trends.",
-    icon: "📊",
+    icon: "📈",
     category: "Marktanalyse",
     readTime: "10 Min.",
   },
@@ -43,7 +51,7 @@ const guides = [
     title: "Kapitalanlage Immobilien",
     slug: "kapitalanlage-immobilien",
     description: "Immobilien als Kapitalanlage im Allgäu: Rendite, Risiken, Steuervorteile und die besten Strategien.",
-    icon: "📈",
+    icon: "💼",
     category: "Investieren",
     readTime: "14 Min.",
   },
