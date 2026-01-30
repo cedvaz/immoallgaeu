@@ -155,7 +155,7 @@ export default function DataSources() {
             <div className="text-sm font-medium text-gray-600">Datenpunkte analysiert</div>
           </div>
           <div className="card p-6 text-center hover:shadow-medium hover:-translate-y-1 transition-all duration-300">
-            <div className="text-4xl font-bold text-secondary-600 mb-2">6</div>
+            <div className="text-4xl font-bold text-secondary-600 mb-2">7</div>
             <div className="text-sm font-medium text-gray-600">Allgäu-Städte abgedeckt</div>
           </div>
           <div className="card p-6 text-center hover:shadow-medium hover:-translate-y-1 transition-all duration-300">
