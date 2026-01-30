@@ -8,6 +8,14 @@ export const metadata: Metadata = {
 
 const guides = [
   {
+    title: "Immobilie erben – Was tun?",
+    slug: "immobilie-erben",
+    description: "Verkaufen, behalten oder vermieten? Alle Optionen, Steuern & Tipps für Erben. Was tun bei Erbengemeinschaft?",
+    icon: "🏛️",
+    category: "Erbrecht",
+    readTime: "12 Min.",
+  },
+  {
     title: "Immobilienpreise Allgäu 2025",
     slug: "immobilienpreise-allgaeu-2025",
     description: "Aktuelle Immobilienpreise & Quadratmeterpreise für alle Allgäuer Städte: Kempten, Oberstdorf, Sonthofen & mehr. Mit Prognose & Trends.",
