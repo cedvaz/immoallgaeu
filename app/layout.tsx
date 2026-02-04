@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CookieBanner from "@/components/layout/CookieBanner";
 import Analytics from "@/components/layout/Analytics";
-import StructuredData from "@/components/layout/StructuredData";
 
 export const metadata: Metadata = {
   title: "Immobilien Allgäu – Kaufen, Verkaufen & Bewerten | ImmoAllgaeu",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "google-site-verification-code", // Add your verification code here
+    google: "google-site-verification=awFeTC-Ii8zLsMb0fBzeeRSsy3c8veDsNSpD6fhvX3I", // Add your verification code here
   },
 };
 
@@ -65,12 +65,36 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'ImmoAllgaeu',
+    description: 'Ihr regionaler Experte für Immobilien im Allgäu. Aktuelle Preise, kostenlose Bewertung und persönliche Beratung.',
+    url: 'https://immoallgaeu.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Am Frickenland 4',
+      addressLocality: 'Kempten',
+      postalCode: '87437',
+      addressCountry: 'DE',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      email: 'info@immoallgaeu.com',
+    },
+  };
+
   return (
     <html lang="de">
-      <head>
-        <StructuredData type="organization" />
-      </head>
       <body className="antialiased">
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
         <Header />
         {children}
         <Footer />
