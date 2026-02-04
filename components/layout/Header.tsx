@@ -19,6 +19,12 @@ export default function Header() {
               Bewertung
             </Link>
             <Link
+              href="/nebenkostenrechner"
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+            >
+              Nebenkosten
+            </Link>
+            <Link
               href="/immobilienpreise"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
             >

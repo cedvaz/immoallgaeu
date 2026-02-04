@@ -59,17 +59,31 @@ export default function ValuationWidget() {
               </div>
             </div>
 
-            <Link
-              href="/immobilienbewertung"
-              className="group relative block w-full mt-6 bg-primary-600 text-white text-center px-8 py-4 rounded-xl text-lg font-bold hover:bg-primary-700 transition-all duration-300 hover:-translate-y-1 shadow-soft hover:shadow-medium"
-            >
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                Jetzt kostenlos bewerten
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </Link>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+              <Link
+                href="/immobilienbewertung"
+                className="group relative block w-full bg-primary-600 text-white text-center px-8 py-4 rounded-xl text-lg font-bold hover:bg-primary-700 transition-all duration-300 hover:-translate-y-1 shadow-soft hover:shadow-medium"
+              >
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  Jetzt kostenlos bewerten
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </Link>
+
+              <Link
+                href="/nebenkostenrechner"
+                className="group relative block w-full bg-white text-primary-600 text-center px-8 py-4 rounded-xl text-lg font-bold border-2 border-primary-600 hover:bg-primary-50 transition-all duration-300 hover:-translate-y-1 shadow-soft hover:shadow-medium"
+              >
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  Nebenkosten berechnen
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                </span>
+              </Link>
+            </div>
 
             {/* Trust indicators */}
             <div className="flex flex-wrap justify-center gap-6 mt-6 text-sm text-gray-600">
