@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import MarketReportPage from "@/components/pages/MarketReportPage";
 
 export const metadata: Metadata = {
-  title: "Marktreport Kempten 2025/2026 – Preisentwicklung & Prognose | ImmoAllgäu",
+  title: "Marktreport Kempten 2026/2027 – Preisentwicklung & Prognose | ImmoAllgäu",
   description:
-    "Datenbasierter Immobilien-Marktreport für Kempten: Historische Preisentwicklung 2020-2025, aktuelle Marktanalyse und Prognose bis 2027. Inklusive Investment-Renditen und Stadtteil-Vergleich.",
+    "Datenbasierter Immobilien-Marktreport für Kempten: Historische Preisentwicklung 2020-2026, aktuelle Marktanalyse und Prognose bis 2027. Inklusive Investment-Renditen und Stadtteil-Vergleich.",
   keywords: [
     "Immobilienpreise Kempten",
     "Marktreport Kempten",
@@ -14,23 +14,23 @@ export const metadata: Metadata = {
     "Stadtteil-Vergleich Kempten",
   ],
   openGraph: {
-    title: "Marktreport Kempten 2025/2026 – Preisentwicklung & Prognose",
+    title: "Marktreport Kempten 2026/2027 – Preisentwicklung & Prognose",
     description:
-      "Umfassender Marktreport für Immobilien in Kempten: Historische Daten 2020-2025, Prognosen bis 2027, Investment-Analysen und Stadtteil-Vergleiche.",
+      "Umfassender Marktreport für Immobilien in Kempten: Historische Daten 2020-2026, Prognosen bis 2027, Investment-Analysen und Stadtteil-Vergleiche.",
     type: "article",
-    publishedTime: "2025-01-14",
+    publishedTime: "2026-02-07",
     images: [
       {
         url: "/og-marktreport-kempten.png",
         width: 1200,
         height: 630,
-        alt: "Kempten Immobilienmarkt Report 2025/2026",
+        alt: "Kempten Immobilienmarkt Report 2026/2027",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marktreport Kempten 2025/2026",
+    title: "Marktreport Kempten 2026/2027",
     description:
       "Datenbasierter Immobilien-Marktreport: Historische Entwicklung, aktuelle Lage und Prognose bis 2027",
   },

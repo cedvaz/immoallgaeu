@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Haus kaufen im Allgäu – Der komplette Guide 2025 | ImmoAllgäu",
+  title: "Haus kaufen im Allgäu – Der komplette Guide 2026 | ImmoAllgäu",
   description: "Alles was Sie über den Hauskauf im Allgäu wissen müssen: Preise, Standorte, Finanzierung, Ablauf und Expertentipps. Jetzt informieren!",
 };
 
@@ -20,11 +20,11 @@ export default function HausKaufenAllgaeuPage() {
             <span>Haus kaufen im Allgäu</span>
           </nav>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Haus kaufen im Allgäu – Der komplette Guide 2025
+            Haus kaufen im Allgäu – Der komplette Guide 2026
           </h1>
           <div className="flex gap-4 text-sm text-gray-600">
             <span>⏱ Lesezeit: 8 Min.</span>
-            <span>📅 Aktualisiert: Januar 2025</span>
+            <span>📅 Aktualisiert: Februar 2026</span>
           </div>
         </div>
       </section>
@@ -56,7 +56,7 @@ export default function HausKaufenAllgaeuPage() {
             </p>
 
             <h2 id="preise" className="text-3xl font-bold mt-12 mb-6">
-              Hauspreise im Allgäu 2025
+              Hauspreise im Allgäu 2026
             </h2>
 
             <p>
@@ -66,7 +66,7 @@ export default function HausKaufenAllgaeuPage() {
             </p>
 
             <div className="bg-blue-50 border-l-4 border-blue-600 p-6 my-8">
-              <h3 className="font-semibold text-lg mb-3">Durchschnittspreise Einfamilienhaus (2025):</h3>
+              <h3 className="font-semibold text-lg mb-3">Durchschnittspreise Einfamilienhaus (2026):</h3>
               <ul className="space-y-2">
                 <li><strong>Kempten:</strong> 4.500 - 5.800 €/m²</li>
                 <li><strong>Kaufbeuren:</strong> 4.000 - 4.800 €/m²</li>
@@ -142,7 +142,7 @@ export default function HausKaufenAllgaeuPage() {
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Zinsbindung</h3>
             <p>
-              Aktuelle Zinsen (Januar 2025) liegen bei ca. 3,5-4,5%. Wählen Sie eine Zinsbindung von
+              Aktuelle Zinsen (Februar 2026) liegen bei ca. 3,5-4,5%. Wählen Sie eine Zinsbindung von
               mindestens 10 Jahren, besser 15-20 Jahre für maximale Planungssicherheit.
             </p>
 

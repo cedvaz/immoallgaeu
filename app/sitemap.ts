@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://immoallgaeu.com'
+  const baseUrl = 'https://www.immoallgaeu.com'
 
   // Static pages
   const staticPages = [

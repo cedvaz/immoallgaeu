@@ -32,7 +32,7 @@ export default function ImmobilieBewerten() {
           </p>
           <div className="flex gap-4 text-sm text-gray-600 mb-8">
             <span>⏱ Lesezeit: 11 Min.</span>
-            <span>📅 Aktualisiert: Januar 2025</span>
+            <span>📅 Aktualisiert: Februar 2026</span>
             <span>📊 Praxisrelevant</span>
           </div>
           <div className="bg-white rounded-2xl p-6 shadow-lg">

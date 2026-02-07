@@ -32,7 +32,7 @@ export default function ImmobilieErbenPage() {
           </p>
           <div className="flex gap-4 text-sm text-gray-600">
             <span>⏱ Lesezeit: 12 Min.</span>
-            <span>📅 Aktualisiert: Januar 2025</span>
+            <span>📅 Aktualisiert: Februar 2026</span>
             <span>⚖️ Rechtlich geprüft</span>
           </div>
         </div>
@@ -457,7 +457,7 @@ export default function ImmobilieErbenPage() {
               richtigen Informationen gut zu bewältigen.
             </p>
 
-            <h3 className="text-2xl font-semibold mt-8 mb-4">📋 Erbschaftssteuer-Freibeträge (2025):</h3>
+            <h3 className="text-2xl font-semibold mt-8 mb-4">📋 Erbschaftssteuer-Freibeträge (2026):</h3>
             <div className="overflow-x-auto mb-8">
               <table className="w-full border-collapse bg-white shadow-sm rounded-lg overflow-hidden">
                 <thead className="bg-primary-600 text-white">

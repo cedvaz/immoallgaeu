@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Immobilie verkaufen im Allgäu – Der komplette Ablauf 2025 | ImmoAllgäu",
+  title: "Immobilie verkaufen im Allgäu – Der komplette Ablauf 2026 | ImmoAllgäu",
   description: "Immobilie erfolgreich verkaufen: Vorbereitung, Preisfindung, Vermarktung, Besichtigungen und Vertragsabschluss. Expertentipps vom regionalen Makler.",
 };
 
@@ -24,7 +24,7 @@ export default function ImmobilieVerkaufenPage() {
           </h1>
           <div className="flex gap-4 text-sm text-gray-600">
             <span>⏱ Lesezeit: 10 Min.</span>
-            <span>📅 Aktualisiert: Januar 2025</span>
+            <span>📅 Aktualisiert: Februar 2026</span>
           </div>
         </div>
       </section>

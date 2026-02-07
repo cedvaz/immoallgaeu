@@ -2,11 +2,11 @@ import { Metadata } from "next";
 import SideCostCalculator from "@/components/forms/SideCostCalculator";
 
 export const metadata: Metadata = {
-  title: "Nebenkostenrechner Immobilienkauf Allgäu | Grunderwerbsteuer Kempten, Notar, Maklerprovision 2025",
+  title: "Nebenkostenrechner Immobilienkauf Allgäu | Grunderwerbsteuer Kempten, Notar, Maklerprovision 2026",
   description: "Kostenloser Nebenkostenrechner für Immobilienkauf im Allgäu. Berechnen Sie Grunderwerbsteuer (3,5%), Notarkosten, Maklerprovision (3,57%) für Kempten, Kaufbeuren, Memmingen, Oberstdorf, Sonthofen, Immenstadt, Pfronten. Transparent und genau für Ihren Hauskauf im Allgäu.",
   keywords: "Nebenkosten Hauskauf Allgäu, Grunderwerbsteuer Kempten, Notarkosten Immobilie Allgäu, Maklerprovision Kempten 3.57, Grundbuchkosten Immobilie Allgäu, Nebenkosten Wohnung kaufen Kempten, Kosten Hauskauf Allgäu, Immobilienkauf Nebenkosten Rechner Allgäu, Grunderwerbsteuer Kaufbeuren, Notar Immobilienkauf Kempten, Nebenkosten Hauskauf Bayern, Immobilienkosten Allgäu, Hauskauf Nebenkosten Kempten",
   openGraph: {
-    title: "Nebenkostenrechner Immobilienkauf Allgäu | Grunderwerbsteuer Kempten, Notar, Makler 2025",
+    title: "Nebenkostenrechner Immobilienkauf Allgäu | Grunderwerbsteuer Kempten, Notar, Makler 2026",
     description: "Berechnen Sie alle Nebenkosten beim Hauskauf im Allgäu: Grunderwerbsteuer 3,5%, Notar 1,5%, Makler 3,57%. Kostenloser Rechner für Kempten, Kaufbeuren, Memmingen, Oberstdorf, Sonthofen.",
   },
 };

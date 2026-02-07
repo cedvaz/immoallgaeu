@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { cityDetails } from "@/lib/data/cityData";
 
 export const metadata: Metadata = {
-  title: "Immobilienpreise Allgäu 2025 – Aktuelle Entwicklung & Prognose | ImmoAllgäu",
-  description: "Aktuelle Immobilienpreise im Allgäu 2025: Quadratmeterpreise für Kempten, Oberstdorf, Sonthofen & mehr. Preise, Trends & Prognosen für Häuser & Wohnungen.",
-  keywords: "Immobilienpreise Allgäu, Immobilienpreise Kempten, Hauspreis Allgäu, Quadratmeterpreis Kempten, Wohnungspreise Oberstdorf, Immobilienmarkt Allgäu 2025",
+  title: "Immobilienpreise Allgäu 2026 – Aktuelle Entwicklung & Prognose | ImmoAllgäu",
+  description: "Aktuelle Immobilienpreise im Allgäu 2026: Quadratmeterpreise für Kempten, Oberstdorf, Sonthofen & mehr. Preise, Trends & Prognosen für Häuser & Wohnungen.",
+  keywords: "Immobilienpreise Allgäu, Immobilienpreise Kempten, Hauspreis Allgäu, Quadratmeterpreis Kempten, Wohnungspreise Oberstdorf, Immobilienmarkt Allgäu 2026",
 };
 
 export default function ImmobilienpreiseAllgaeu2025Page() {
@@ -30,21 +30,21 @@ export default function ImmobilienpreiseAllgaeu2025Page() {
             <span className="mx-2">/</span>
             <Link href="/ratgeber" className="hover:text-primary-600">Ratgeber</Link>
             <span className="mx-2">/</span>
-            <span>Immobilienpreise Allgäu 2025</span>
+            <span>Immobilienpreise Allgäu 2026</span>
           </nav>
           <div className="inline-block bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            📊 Marktbericht 2025
+            📊 Marktbericht 2026
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Immobilienpreise Allgäu 2025 – Aktuelle Entwicklung & Prognose
+            Immobilienpreise Allgäu 2026 – Aktuelle Entwicklung & Prognose
           </h1>
           <p className="text-xl text-gray-700 mb-6">
             Detaillierte Analyse der Immobilienpreise in allen Allgäuer Städten: 
-            Quadratmeterpreise, Trends und Marktausblick für 2025
+            Quadratmeterpreise, Trends und Marktausblick für 2026
           </p>
           <div className="flex gap-4 text-sm text-gray-600">
             <span>⏱ Lesezeit: 10 Min.</span>
-            <span>📅 Aktualisiert: Januar 2025</span>
+            <span>📅 Aktualisiert: Februar 2026</span>
             <span>📈 Echte Marktdaten</span>
           </div>
         </div>
@@ -60,7 +60,7 @@ export default function ImmobilienpreiseAllgaeu2025Page() {
             <a href="#wohnungen" className="text-primary-600 hover:underline">Wohnungspreise</a>
             <a href="#haeuser" className="text-primary-600 hover:underline">Häuserpreise</a>
             <a href="#trends" className="text-primary-600 hover:underline">Preistrends</a>
-            <a href="#prognose" className="text-primary-600 hover:underline">Prognose 2025</a>
+            <a href="#prognose" className="text-primary-600 hover:underline">Prognose 2026</a>
             <a href="#faktoren" className="text-primary-600 hover:underline">Preisfaktoren</a>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function ImmobilienpreiseAllgaeu2025Page() {
           <div className="prose prose-lg max-w-none">
             {/* Einleitung */}
             <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-              Der Allgäuer Immobilienmarkt zeigt sich 2025 weiterhin dynamisch. Die Preise entwickeln sich 
+              Der Allgäuer Immobilienmarkt zeigt sich 2026 weiterhin dynamisch. Die Preise entwickeln sich 
               je nach Lage und Objekttyp unterschiedlich. Während beliebte Ferienorte wie <strong>Oberstdorf</strong> 
               mit Spitzenpreisen von über 6.500 €/m² aufwarten, bieten Städte wie <strong>Memmingen</strong> mit 
               rund 3.600 €/m² noch vergleichsweise günstige Einstiegsmöglichkeiten.
@@ -80,12 +80,12 @@ export default function ImmobilienpreiseAllgaeu2025Page() {
 
             {/* Überblick */}
             <h2 id="ueberblick" className="text-3xl font-bold mt-12 mb-6">
-              Immobilienpreise im Allgäu 2025 – Der Überblick
+              Immobilienpreise im Allgäu 2026 – Der Überblick
             </h2>
 
             <div className="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-2xl p-8 my-8">
               <h3 className="font-semibold text-xl mb-6 text-gray-900">
-                📊 Durchschnittlicher Quadratmeterpreis nach Stadt (2025):
+                📊 Durchschnittlicher Quadratmeterpreis nach Stadt (2026):
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {cities.sort((a, b) => b.avgPriceNum - a.avgPriceNum).map((city) => (
@@ -106,7 +106,7 @@ export default function ImmobilienpreiseAllgaeu2025Page() {
             </div>
 
             <p>
-              Der durchschnittliche <strong>Quadratmeterpreis im Allgäu</strong> liegt 2025 bei etwa 
+              Der durchschnittliche <strong>Quadratmeterpreis im Allgäu</strong> liegt 2026 bei etwa 
               <strong> 4.614 €/m²</strong> (Mittelwert über alle Städte). Die Spanne reicht von 
               3.600 €/m² in Memmingen bis 6.500 €/m² in Oberstdorf.
             </p>
@@ -291,7 +291,7 @@ export default function ImmobilienpreiseAllgaeu2025Page() {
 
             {/* Häuserpreise */}
             <h2 id="haeuser" className="text-3xl font-bold mt-12 mb-6">
-              Häuserpreise im Allgäu 2025
+              Häuserpreise im Allgäu 2026
             </h2>
 
             <p className="mb-6">
@@ -333,7 +333,7 @@ export default function ImmobilienpreiseAllgaeu2025Page() {
             </h2>
 
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 mb-8">
-              <h3 className="font-semibold text-xl mb-6 text-gray-900">📈 Preisentwicklung 2024 → 2025:</h3>
+              <h3 className="font-semibold text-xl mb-6 text-gray-900">📈 Preisentwicklung 2025 → 2026:</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-semibold mb-3 text-green-700">✓ Starke Preisentwicklung:</h4>
@@ -356,7 +356,7 @@ export default function ImmobilienpreiseAllgaeu2025Page() {
             </div>
 
             <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 my-8">
-              <h3 className="font-semibold text-lg mb-3">⚠️ Wichtige Marktbeobachtungen 2025:</h3>
+              <h3 className="font-semibold text-lg mb-3">⚠️ Wichtige Marktbeobachtungen 2026:</h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• <strong>Nachfrage übersteigt Angebot:</strong> Besonders bei Einfamilienhäusern gibt es wenig verfügbare Objekte</li>
                 <li>• <strong>Zinsniveau:</strong> Gestiegene Zinsen dämpfen die Nachfrage leicht, aber Allgäu bleibt attraktiv</li>
@@ -367,11 +367,11 @@ export default function ImmobilienpreiseAllgaeu2025Page() {
 
             {/* Prognose */}
             <h2 id="prognose" className="text-3xl font-bold mt-12 mb-6">
-              Prognose: Wie entwickeln sich die Preise 2025/2026?
+              Prognose: Wie entwickeln sich die Preise 2026/2027?
             </h2>
 
             <p className="mb-6">
-              Experten gehen für 2025 und 2026 von folgender Entwicklung aus:
+              Experten gehen für 2026 und 2027 von folgender Entwicklung aus:
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-8">
@@ -404,7 +404,7 @@ export default function ImmobilienpreiseAllgaeu2025Page() {
             <div className="bg-primary-50 border-l-4 border-primary-600 p-6 my-8">
               <h3 className="font-semibold text-lg mb-3">🎯 Investoren-Tipp:</h3>
               <p className="mb-3">
-                Der <strong>Allgäuer Immobilienmarkt</strong> bleibt auch 2025 stabil und attraktiv. 
+                Der <strong>Allgäuer Immobilienmarkt</strong> bleibt auch 2026 stabil und attraktiv. 
                 Besonders interessant sind:
               </p>
               <ul className="space-y-2 text-gray-700">
@@ -560,7 +560,7 @@ export default function ImmobilienpreiseAllgaeu2025Page() {
 
               <details className="card p-6 group">
                 <summary className="font-semibold text-lg cursor-pointer list-none flex items-center justify-between">
-                  <span>Werden die Preise 2025/2026 weiter steigen?</span>
+                  <span>Werden die Preise 2026/2027 weiter steigen?</span>
                   <svg className="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>

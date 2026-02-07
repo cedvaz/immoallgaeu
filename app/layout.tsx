@@ -18,14 +18,11 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://immoallgaeu.com'),
-  alternates: {
-    canonical: '/',
-  },
+  metadataBase: new URL('https://www.immoallgaeu.com'),
   openGraph: {
     title: "Immobilien Allgäu – Kaufen, Verkaufen & Bewerten",
     description: "Ihr regionaler Experte für Immobilien im Allgäu. Aktuelle Preise, kostenlose Bewertung und persönliche Beratung.",
-    url: "https://immoallgaeu.com",
+    url: "https://www.immoallgaeu.com",
     siteName: "ImmoAllgaeu",
     locale: "de_DE",
     type: "website",
@@ -70,7 +67,7 @@ export default function RootLayout({
     '@type': 'Organization',
     name: 'ImmoAllgaeu',
     description: 'Ihr regionaler Experte für Immobilien im Allgäu. Aktuelle Preise, kostenlose Bewertung und persönliche Beratung.',
-    url: 'https://immoallgaeu.com',
+    url: 'https://www.immoallgaeu.com',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Am Frickenland 4',

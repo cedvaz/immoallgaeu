@@ -24,7 +24,7 @@ const guides = [
     readTime: "12 Min.",
   },
   {
-    title: "Immobilienpreise Allgäu 2025",
+    title: "Immobilienpreise Allgäu 2026",
     slug: "immobilienpreise-allgaeu-2025",
     description: "Aktuelle Immobilienpreise & Quadratmeterpreise für alle Allgäuer Städte: Kempten, Oberstdorf, Sonthofen & mehr. Mit Prognose & Trends.",
     icon: "📈",

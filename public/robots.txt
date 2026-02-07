@@ -26,4 +26,4 @@ User-agent: YandexBot
 Allow: /
 
 # Sitemap location
-Sitemap: https://immoallgaeu.com/sitemap.xml
+Sitemap: https://www.immoallgaeu.com/sitemap.xml

@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Kapitalanlage Immobilien im Allgäu – Rendite, Risiken & Tipps 2025 | ImmoAllgäu",
+  title: "Kapitalanlage Immobilien im Allgäu – Rendite, Risiken & Tipps 2026 | ImmoAllgäu",
   description: "Lohnt sich die Investition in Immobilien im Allgäu? Renditen, Standorte, Steuervorteile und worauf Sie achten müssen. Jetzt informieren!",
 };
 
@@ -27,7 +27,7 @@ export default function KapitalanlageImmobilienPage() {
           </p>
           <div className="flex gap-4 text-sm text-gray-600 mt-4">
             <span>⏱ Lesezeit: 9 Min.</span>
-            <span>📅 Aktualisiert: Januar 2025</span>
+            <span>📅 Aktualisiert: Februar 2026</span>
           </div>
         </div>
       </section>
@@ -85,7 +85,7 @@ export default function KapitalanlageImmobilienPage() {
             </p>
 
             <div className="bg-blue-50 border-l-4 border-blue-600 p-6 my-8">
-              <h3 className="font-semibold text-lg mb-3">Durchschnittliche Brutto-Mietrenditen 2025:</h3>
+              <h3 className="font-semibold text-lg mb-3">Durchschnittliche Brutto-Mietrenditen 2026:</h3>
               <ul className="space-y-3">
                 <li>
                   <strong>Kempten (Wohnung):</strong> 3,5-4,5%<br/>
